@@ -1,4 +1,112 @@
-1、run-sequence
+使用gulp自动化前端工作流
+
+安装gulp
+gulp推荐安装到项目目录，不推荐全局目录，因为后期gulp会自动引入项目相关的支持包，如果全局安装gulp，这些支持包全都安装在/usr/local/lib/node_modules/下，不利于管理，可能易引起冲突。
+
+npm install gulp
+安装常用插件
+// js压缩
+gulp-uglify
+// css压缩
+gulp-clean-css
+// 重命名
+gulp-rename
+// 合并文件
+gulp-concat
+// 捕获错误
+gulp-plumber
+// 打包
+gulp-zip
+//过率console信息
+gulp-strip-debug
+在gulpfile.js中载入插件
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var minifyCss = require('gulp-minify-css');
+var rename = require('gulp-rename');
+var plumber  = require('gulp-plumber');
+var zip = require('gulp-zip');
+var browserSync = require('browser-sync');
+自动压缩css重命名
+定义一个任务compress-css,压缩static文件夹下面的index.css,并且重命名为index.min.css,保存到build文件夹下面
+
+gulp.task('compress-css', function() {
+    gulp.src('static/index.css')
+        .pipe(minifyCss())
+        .pipe(rename('index.min.css')) 
+        .pipe(gulp.dest('build'));
+});
+自动压缩js代码并且重命名
+定义一个任务compress-js,压缩static文件夹下面的index.js,并且重命名为index.min.js,保存到build文件夹下面
+
+gulp.task('compress-js', function() {
+    gulp.src('static/index.js')
+        .pipe(uglify())
+        .pipe(rename('index.min.js')) 
+        .pipe(gulp.dest('build'));
+});
+自动合并文件
+合并src下面的js文件，重命名为all.js，保存在build文件夹下面
+
+gulp.task('minify', function (){
+     return gulp.src('src/*.js')
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('build'))
+});
+执行某个任务
+gulp teskname
+监视文件变化
+这里定义一个默认的任务，只需要在gulp里面输入gulp
+
+gulp.task('default', function(){
+    gulp.watch('src/*.*', function(){
+        gulp.run('teakname')
+    });
+});
+
+打包发布任务
+新建任务zip，将build文件夹下面的文件全部打包为publish.zip,发布到release文件夹下面
+
+gulp.task('zip', function(){
+    return gulp.src('build/*')
+        .pipe(plumber())
+        .pipe(zip('publish.zip'))
+        .pipe(gulp.dest('release'))
+});
+自动刷新浏览器
+新建任务start，启用一个本地server，监视当前目录下的所有文件，一旦文件变化，浏览器reload
+
+gulp.task('start', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+
+    gulp.watch('./*', function() {
+        browserSync.reload();
+    });
+})
+在build任务中过滤目标文件中的console.log();
+var stripDebug = require('gulp-strip-debug');
+gulp.task('build', function () {
+        .gulp.src()
+        .pipe(stripDebug())
+        .pipe(gulp.dest());
+});
+监听gulp任务结束,执行回调
+gulp.task('dev', function(){
+    gulp.src(src)
+        .pipe(rename('app.js'))
+        .on('end',function(){
+           console.log('这里是回调')
+        })
+
+});
+2015年12月23日发布
+
+- 1、run-sequence
 Links: https://www.npmjs.com/package/run-sequence
 作用：让gulp任务，可以相互独立，解除任务间的依赖，增强task复用
 
