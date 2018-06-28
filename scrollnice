@@ -1,0 +1,182 @@
+```javascript
+
+      var ns = null;
+        var nstimer;
+        var waite = true;
+        $(function(){
+            ns =  $("#scrollbox").niceScroll();
+            ns.jqbind("#scrollbox","scroll",function(){ if(ns.newscrolly == ns.page.maxh){
+                
+                if(waite){
+                    waite = !waite;
+                    clearTimeout(nstimer);
+                    nstimer = setTimeout(function(){
+                        console.log("adding……");
+                        $("#scrollbox>div").append(  $("#scrollbox").html());
+                        waite = !waite;
+                    }, 300);     
+                }
+                }});
+        });
+
+autohidedom:n.fn.init(2) [div#ascrail2000.nicescroll-rails.nicescroll-rails-vr, div#ascrail2000-hr.nicescroll-rails.nicescroll-rails-hr, prevObject: n.fn.init(1), context: undefined]
+bind:ƒ (b,c,d,e)
+body:n.fn.init [body, prevObject: n.fn.init(1), context: document, selector: "body"]
+bzscroll:false
+cancelAnimationFrame:false
+cancelEvent:ƒ (a)
+cancelScroll:ƒ ()
+canhwscroll:true
+canshowonmouseevent:true
+checkContentSize:ƒ ()
+checkarea:0
+css:ƒ (b,g)
+cursor:n.fn.init [div.nicescroll-cursors, context: div.nicescroll-cursors, hborder: 2]
+cursoractive:false
+cursorfreezed:false
+cursorh:n.fn.init [div.nicescroll-cursors, context: div.nicescroll-cursors, wborder: 2]
+cursorheight:178
+cursortimeout:0
+cursorwidth:200
+debounced:ƒ (b,g,c)
+delaylist:{}
+detected:{haspointerlock: true, isopera: false, isopera12: false, isoperamini: false, isie: false, …}
+doRailClick:ƒ (b,g,c)
+doScrollBy:ƒ (b,c)
+doScrollLeft:ƒ (b,c)
+doScrollLeftBy:ƒ (b,c)
+doScrollPos:ƒ (b,c,d)
+doScrollTo:ƒ (b,c)
+doScrollTop:ƒ (b,c)
+doZoom:ƒ (b)
+doZoomIn:ƒ (b)
+doZoomOut:ƒ (b)
+doc:n.fn.init [div#scrollbox.main, context: div#scrollbox.main]
+docscroll:n.fn.init [div#scrollbox.main, context: div#scrollbox.main]
+dst:{x: 0, y: 0, px: 0, py: 0, ax: NaN, …}
+events:(39) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+forcescreen:false
+getContentSize:ƒ ()
+getDocumentScrollOffset:ƒ ()
+getOffset:ƒ ()
+getScrollLeft:ƒ ()
+getScrollTop:ƒ ()
+getTarget:ƒ (a)
+getTransitionSpeed:ƒ (b)
+getViewport:ƒ (a)
+hasParent:ƒ (a,g)
+hasTextSelected:ƒ ()
+hasanimationframe:ƒ requestAnimationFrame()
+hascancelanimationframe:ƒ cancelAnimationFrame()
+hasfocus:false
+hasmousefocus:false
+hasmoving:true
+hasreversehr:false
+haswrapper:false
+hidden:false
+hide:ƒ ()
+hideCursor:ƒ (b)
+hideRail:ƒ ()
+hideRailHr:ƒ ()
+hlazyresize:5
+id:"ascrail2000"
+iddoc:"scrollbox"
+iframe:false
+init:ƒ ()
+isScrollable:ƒ (a)
+isfixed:false
+ishwscroll:false
+isiframe:false
+ispage:false
+isrtlmode:false
+istextarea:false
+istouchcapable:false
+isvertical:false
+jqbind:ƒ (b,c,d)
+lastdeltax:0
+lastdeltay:0
+lazyResize:ƒ (b)
+locked:false
+me:n.fn.init [div#scrollbox.main, context: div#scrollbox.main]
+mousewheel:ƒ (b,c,d)
+name:"nicescroll"
+nativescrollingarea:false
+newscrollx:0
+newscrolly:906
+noticeCursor:ƒ (b,c,d)
+observer:MutationObserver {}
+observerbody:MutationObserver {}
+observerremover:MutationObserver {}
+onAttributeChange:ƒ (b)
+onResize:ƒ (b,c)
+onclick:false
+ongesturezoom:false
+onkeypress:ƒ (b)
+onmousedown:ƒ (b,c)
+onmousemove:ƒ (b)
+onmouseup:ƒ (b)
+onmousewheel:ƒ (b)
+onmousewheelhr:ƒ (b)
+onscroll:ƒ (b)
+onscrollcancel:false
+onscrollend:false
+onscrollstart:false
+onselectiondrag:ƒ (b)
+onselectionend:ƒ (b)
+onselectionstart:ƒ (b)
+onzoomin:false
+onzoomout:false
+opt:{doc: n.fn.init(1), win: false, zindex: "auto", cursoropacitymin: 0, cursoropacitymax: 1, …}
+overflowx:true
+overflowy:true
+page:{w: 200, h: 1406, maxh: 906, maxw: 0}
+rail:n.fn.init [div#ascrail2000.nicescroll-rails.nicescroll-rails-vr, context: div#ascrail2000.nicescroll-rails.nicescroll-rails-vr, width: 8, visibility: true, scrollable: true, align: 1, …]
+railh:n.fn.init [div#ascrail2000-hr.nicescroll-rails.nicescroll-rails-hr, context: div#ascrail2000-hr.nicescroll-rails.nicescroll-rails-hr, height: 8, visibility: false, scrollable: false, align: 1, …]
+railslocked:false
+remove:ƒ ()
+resize:ƒ (b,c)
+resizeZoom:ƒ ()
+saved:{css: Array(2)}
+scroll:{x: NaN, y: 320}
+scrollLeft:ƒ (b)
+scrollTop:ƒ (b)
+scrollcancel:ƒ (b)
+scrollend:ƒ (b)
+scrollmom:false
+scrollratio:{x: -0, y: 2.83125}
+scrollrunning:false
+scrollstart:ƒ (b)
+scrollvaluemax:320
+scrollvaluemaxw:-10
+selectiondrag:false
+setScrollLeft:ƒ (b)
+setScrollTop:ƒ (b)
+show:ƒ ()
+showCursor:ƒ (b,c)
+showRail:ƒ ()
+showRailHr:ƒ ()
+stop:ƒ ()
+stopPropagation:ƒ (a)
+synched:ƒ (b,g)
+synclist:{chromefix: false, mousemove: false}
+timer:0
+toggle:ƒ ()
+triggerScrollEnd:ƒ ()
+unbindAll:ƒ ()
+unsynched:ƒ (b)
+updateScrollBar:ƒ (b)
+version:"3.6.8"
+view:{w: 200, h: 500}  滚动区域
+viewport:false
+visibility:true
+wheelprevented:false
+win:n.fn.init [div#scrollbox.main, context: div#scrollbox.main]
+zindex:"auto"
+zoom:false
+zoomactive:false
+zoomin:ƒ (b)
+zoomout:ƒ (b)
+_bind:ƒ (b,c,d,e)
+_unbind:ƒ (a,c,d,e)
+__proto__:Object
+```
